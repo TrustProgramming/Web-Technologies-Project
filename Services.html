@@ -371,30 +371,140 @@
           max-height: 120px;
         }
       }
+      .demo-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 10;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        background: #191a2380;
+        backdrop-filter: blur(7px);
+      }
+      .demo-modal.open {
+        display: flex;
+      }
+      body.modal-open {
+        overflow: hidden;
+      }
+      .demo-dialog {
+        position: relative;
+        width: min(100%, 520px);
+        max-height: calc(100vh - 36px);
+        overflow: auto;
+        padding: 30px;
+        border: 1px solid #191a23;
+        border-bottom: 6px solid #191a23;
+        border-radius: 22px;
+        background: white;
+        box-shadow: 0 24px 80px #0003;
+      }
+      .demo-dialog h2 {
+        margin: 0 42px 6px 0;
+        font-size: 27px;
+      }
+      .demo-dialog p {
+        margin: 0 0 18px;
+        color: #595a62;
+      }
+      .demo-close {
+        position: absolute;
+        top: 14px;
+        right: 15px;
+        width: 38px;
+        height: 38px;
+        border: 0;
+        border-radius: 50%;
+        background: #f3f3f3;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      .demo-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .demo-field {
+        display: grid;
+        gap: 4px;
+      }
+      .demo-field.full {
+        grid-column: 1/-1;
+      }
+      .demo-field label {
+        font-size: 13px;
+        font-weight: bold;
+      }
+      .demo-field input,
+      .demo-field textarea {
+        width: 100%;
+        padding: 11px;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+        font: inherit;
+        font-size: 14px;
+      }
+      .demo-field textarea {
+        min-height: 75px;
+      }
+      .demo-submit {
+        width: 100%;
+        margin-top: 15px;
+        padding: 14px;
+        border: 0;
+        border-radius: 9px;
+        background: #191a23;
+        color: white;
+        font: inherit;
+        cursor: pointer;
+      }
+      .demo-success {
+        display: none;
+        margin-top: 12px;
+        padding: 12px;
+        border-radius: 8px;
+        background: #b9ff66;
+      }
+      .demo-success.show {
+        display: block;
+      }
+      @media (max-width: 480px) {
+        .demo-grid {
+          grid-template-columns: 1fr;
+        }
+        .demo-field.full {
+          grid-column: auto;
+        }
+        .demo-dialog {
+          padding: 24px 20px;
+        }
+      }
+
+
     </style>
   </head>
   <body>
     <header>
       <nav aria-label="Main navigation">
         <a class="brand" href="index.html"
-          ><img src="Sparkle.jfif" alt="" />Positivus</a
-        >
+          ><img src="Sparkle.jfif" alt="" />Positivus</a>
         <ul class="nav-links">
-          <li><a href="About.html">About Us</a></li>
+          <li>
+            <a href="About.html">About Us</a>
+          </li>
           <li>
             <a class="active" href="Services.html" aria-current="page"
-              >Services</a
-            >
+              >Services</a>
           </li>
-          <li><a href="Pricing.html">Pricing</a></li>
-          <li><a href="Blog.html">Blog</a></li>
           <li>
-            <button
-              class="request"
-              onclick="location.href = 'mailto:hello@positivus.example'"
-            >
-              Request a quote
-            </button>
+            <a href="Pricing.html">Pricing</a>
+          </li>
+          <li>
+            <a href="Blog.html">Blog</a>
+          </li>
+          <li>
+            <button class="request" data-demo>Request a demo</button>
           </li>
         </ul>
       </nav>
@@ -403,9 +513,9 @@
       <section class="intro" aria-labelledby="services-title">
         <h1 id="services-title">Services</h1>
         <p>
-          At our digital marketing agency, we offer a range of services to help
-          businesses grow and succeed online. From strategy to execution, we
-          help you reach the right people and make every click count.
+                     At our digital marketing agency, we offer a range of services to help
+          businesses grow and succeed online. From strategy to execution, we           help
+          you reach the right people and make every click count.
         </p>
       </section>
       <section class="service-grid" aria-label="Digital marketing services">
@@ -417,8 +527,7 @@
             <a
               class="learn"
               href="mailto:hello@positivus.example?subject=SEO%20services"
-              ><span class="arrow">↗</span> Learn more</a
-            >
+              ><span class="arrow">↗</span> Learn more</a>
           </div>
           <div class="art">
             <svg
@@ -459,8 +568,7 @@
             <a
               class="learn"
               href="mailto:hello@positivus.example?subject=PPC%20services"
-              ><span class="arrow">↗</span> Learn more</a
-            >
+              ><span class="arrow">↗</span> Learn more</a>
           </div>
           <div class="art">
             <svg
@@ -521,8 +629,7 @@
             <a
               class="learn"
               href="mailto:hello@positivus.example?subject=Social%20media%20services"
-              ><span class="arrow">↗</span> Learn more</a
-            >
+              ><span class="arrow">↗</span> Learn more</a>
           </div>
           <div class="art">
             <svg
@@ -585,8 +692,7 @@
             <a
               class="learn"
               href="mailto:hello@positivus.example?subject=Email%20marketing"
-              ><span class="arrow">↗</span> Learn more</a
-            >
+              ><span class="arrow">↗</span> Learn more</a>
           </div>
           <div class="art">
             <svg
@@ -631,8 +737,7 @@
             <a
               class="learn"
               href="mailto:hello@positivus.example?subject=Content%20creation"
-              ><span class="arrow">↗</span> Learn more</a
-            >
+              ><span class="arrow">↗</span> Learn more</a>
           </div>
           <div class="art">
             <svg
@@ -684,8 +789,7 @@
             <a
               class="learn"
               href="mailto:hello@positivus.example?subject=Analytics%20and%20tracking"
-              ><span class="arrow">↗</span> Learn more</a
-            >
+              ><span class="arrow">↗</span> Learn more</a>
           </div>
           <div class="art">
             <svg
@@ -729,13 +833,12 @@
         <div>
           <h2>Let’s grow your business together</h2>
           <p>
-            Tell us what you’re working toward. We’ll put together a practical
+                         Tell us what you’re working toward. We’ll put together a practical
             plan that fits your goals, your audience, and your next big idea.
           </p>
         </div>
         <a href="mailto:hello@positivus.example?subject=Let%27s%20talk"
-          >Get in touch</a
-        >
+          >Get in touch</a>
       </section>
     </main>
     <footer>
@@ -744,5 +847,48 @@
         <p>Digital marketing with a little more purpose. © 2026 Positivus</p>
       </div>
     </footer>
+    <div
+      class="demo-modal"
+      id="demo-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="demo-title"
+    >
+      <section class="demo-dialog">
+        <button
+          class="demo-close"
+          type="button"
+          data-close
+          aria-label="Close dialog"
+        >
+          ×
+        </button>
+        <h2 id="demo-title">Request a demo</h2>
+        <p>Tell us a little about your goals and we’ll be in touch.</p>
+        <form>
+          <div class="demo-grid">
+            <div class="demo-field">
+              <label for="demo-name">Your name</label>
+              <input id="demo-name" name="name" required />
+            </div>
+            <div class="demo-field">
+              <label for="demo-email">Work email</label>
+              <input id="demo-email" name="email" type="email" required />
+            </div>
+            <div class="demo-field full">
+              <label for="demo-company">Company</label>
+              <input id="demo-company" name="company" required />
+            </div>
+            <div class="demo-field full">
+              <label for="demo-message">What would you like to explore?</label>
+              <textarea id="demo-message" name="message"></textarea>
+            </div>
+          </div>
+          <button class="demo-submit" type="submit">Send demo request</button>
+          <div class="demo-success" role="status" aria-live="polite"></div>
+        </form>
+      </section>
+    </div>
+    <script src="demo.js" defer></script>
   </body>
 </html>
